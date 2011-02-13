@@ -65,26 +65,18 @@ int main(int argc, char **argv)
 		}
 	}
 
-	/* Check maximum number of child processes */
-	if ((child_max = sysconf(_SC_CHILD_MAX)) < (argc - 1)) {
-		errno = E2BIG;
-		perror(argv[0]);
-		exit(1);
-	}
-
 	/* Create child processes for input file */
 	for (i = 1; i < argc; i++) {
-		if ((pid = fork()) < 0) {
+		if ((pid = fork()) < 0)
 			perror(argv[0]);
-		}
 
 		/* Child process */
 		if (pid == 0) {
-			if ((nremoved = clean_file(argv[i], buf, BUFFSIZE)) < 0) {
-				perror("clean_file");
-				exit(i);
-			}
-			printf("%s: Cleaned; %d characters removed\n", argv[i], nremoved);
+			if ((nremoved = clean_file(argv[i], buf, BUFFSIZE)) < 0)
+				perror(argv[i]);
+			else
+				printf("%s: Cleaned; %d characters removed\n",
+					argv[i], nremoved);
 			exit(i);
 		}
 	}
