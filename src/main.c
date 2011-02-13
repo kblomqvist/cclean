@@ -40,7 +40,6 @@ int main(int argc, char **argv)
 	struct sigaction sig;
 	pid_t pid;
 	char buf[BUFFSIZE];
-	long child_max = 0;
 
 	if (argc == 1) {
 		fprintf(stderr, "Usage: cclean [OPTION] [FILE] ...\n");
