@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
+
 #include "functions.h"
 
 int rm_comments(char *str, enum SState *state)

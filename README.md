@@ -7,8 +7,8 @@ The cleaned file is written into a new file postfixed by ".clean".
 
 Use eather make or make all to compile and link the program.
 
-  make
-  ./cclean -h
+        make
+        ./cclean -h
 
 #### MAKE TARGETS
 

@@ -1,17 +1,17 @@
 #ifndef __CCLEAN_FUNCTIONS_H
 #define __CCLEAN_FUNCTIONS_H
 
-/**
- * Source state
- */
+/* Source state for rm_comments() */
 enum SState { CODE, COMMENT, STRING, WAIT_NL };
 
 /**
- * Shows help information
+ * Remove C comments (ansi and c99) from the given dump
  *
- * @return void
+ * @param  char* dump to parse, should be one source code line
+ * @param  enum  SState state of the code
+ * @return int   number of removed characters
  */
-void show_help(void);
+int rm_comments(char *s, enum SState *state);
 
 /**
  * This function reads the given file in pathname and creates a new
@@ -25,21 +25,7 @@ void show_help(void);
  */
 int clean_file(const char *pathname, char *buf, size_t nbytes);
 
-/**
- * Return 1 if string is empty
- *
- * @param const char* str
- * @return int
- */
+/* Return 1 if string is empty */
 int str_isempty(const char *str);
-
-/**
- * Remove C comments (ansi and c99) from the given dump
- *
- * @param  char* dump to parse, should be one source code line
- * @param  enum  SState state of the code
- * @return int   number of removed characters
- */
-int rm_comments(char *s, enum SState *state);
 
 #endif
