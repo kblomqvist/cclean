@@ -1,3 +1,4 @@
 cclean
+libfuncs.a
 *.o
 *.clean
